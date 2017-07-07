@@ -4,7 +4,8 @@ import {Http} from '@angular/http';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
-import {Subject} from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
 import { CityDetailsService } from "./city-details.service";
 
@@ -12,12 +13,14 @@ import { CityDetailsService } from "./city-details.service";
 
 export class FetchDataService {
 
-    private cities = new Subject();
+    public cities = new BehaviorSubject([]);
     private date = new Subject();
     private apiKey: string = 'e4a01aeef0993c451f22d98569c8e243';
     private subscription: Subscription;
 
-    constructor(private http: Http, private cityDetailService: CityDetailsService) { }
+    constructor(private http: Http, private cityDetailService: CityDetailsService) {
+        this.refreshItems();
+    }
     
     getDataFromServer(id: number) {
          return this.http.get('http://api.openweathermap.org/data/2.5/weather?id=' + id + '&units=metric&APPID=' + this.apiKey)
@@ -39,7 +42,7 @@ export class FetchDataService {
             if (array === null) {
                 array = [];
             }
-
+            /*
             let isMatch = false;
             //check if id is in the array
             array.forEach((element: any) => {
@@ -47,8 +50,8 @@ export class FetchDataService {
                     isMatch = true;
                 }
             });
-
-            if (!isMatch) {
+*/
+            if (!array.some((val: any) => { val.id == id;} )) {
                 this.getDataFromServer(id).subscribe(data => {
                     array.unshift(data);
                     this.saveCitiesInLocalStorage(array);

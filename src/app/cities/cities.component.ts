@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { FetchDataService } from '../services/fetchData.service';
-import { OnInit } from '@angular/core';
-import { CitiesListService } from "../services/cities-list.service";
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+
+import { FetchDataService } from '../services/fetchData.service';
+import { CitiesListService } from "../services/cities-list.service";
 
 @Component({
   moduleId: module.id,
@@ -25,8 +25,7 @@ export class CitiesComponent implements OnInit {
 
   ngOnInit() { 
     this.date = localStorage.getItem('lastDate');
-    this.fetchDataService.refreshItems();
-    this.cities = this.fetchDataService.init();
+    this.cities = this.fetchDataService.cities.getValue();
     this.getDate();
     this.getCities();
     this.lists = this.citiesListService.citiesList;
