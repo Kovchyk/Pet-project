@@ -3,7 +3,7 @@ import { FetchDataService } from '../services/fetchData.service';
 import { ActivatedRoute } from "@angular/router";
 import { CityDetailsService } from "../services/city-details.service";
 import { Resolver } from "../services/resolver";
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -20,7 +20,7 @@ export class CityDetailsComponent implements OnInit{
 
   constructor(private fetchDataService: FetchDataService, 
               private activatedRoute: ActivatedRoute,
-              private location: Location) { }
+              private router: Router) { }
 
     ngOnInit() {
       this.activatedRoute.data.subscribe(data => {
@@ -45,6 +45,6 @@ export class CityDetailsComponent implements OnInit{
     }
 
     backToCities() {
-      this.location.back();
+      this.router.navigate(['/']);
     }
 }

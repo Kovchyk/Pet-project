@@ -42,16 +42,8 @@ export class FetchDataService {
             if (array === null) {
                 array = [];
             }
-            /*
-            let isMatch = false;
-            //check if id is in the array
-            array.forEach((element: any) => {
-                if (element.id == id) {
-                    isMatch = true;
-                }
-            });
-*/
-            if (!array.some((val: any) => { val.id == id;} )) {
+
+            if (!array.some((val: any) => { return val.id == id;} )) {
                 this.getDataFromServer(id).subscribe(data => {
                     array.unshift(data);
                     this.saveCitiesInLocalStorage(array);
@@ -59,10 +51,6 @@ export class FetchDataService {
                 });
             }
         }
-    }
-
-    init() {
-        return JSON.parse(localStorage.getItem("storedCities"));
     }
 
     getCities() {

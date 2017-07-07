@@ -7,10 +7,6 @@
                 [(ngModel)]="mySelectValue"
                 [placeholder]="myPlaceholderText">
             </ng-select>
-            <!--<input type="text" list="cities" [(ngModel)]="city" name="" value="">
-            <datalist id="cities" >
-                <option [value]="city.name" *ngFor="let city of lists">
-            </datalist>-->
             <a routerLink="" (click)="goToDetails()">Add city</a>
         </div>
         <div class="city-name" [hidden]="cities == null || !cities.length">
