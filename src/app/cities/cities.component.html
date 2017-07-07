@@ -1,0 +1,53 @@
+<section id="content">
+    <div id="select-city-wrapper">
+        <div id="select-city">
+           <ng-select
+                [multiple]="false"
+                [options]="options"
+                [(ngModel)]="mySelectValue"
+                [placeholder]="myPlaceholderText">
+            </ng-select>
+            <!--<input type="text" list="cities" [(ngModel)]="city" name="" value="">
+            <datalist id="cities" >
+                <option [value]="city.name" *ngFor="let city of lists">
+            </datalist>-->
+            <a routerLink="" (click)="goToDetails()">Add city</a>
+        </div>
+        <div class="city-name" [hidden]="cities == null || !cities.length">
+            <h2>{{date | date:'shortTime'}}</h2>
+            <div class="refresh">
+                <a href="#" (click)="refreshAllbyButton()">
+                    <img src="images/refresh.svg" alt="refresh" />
+                </a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <h2 *ngIf="cities == null || !cities.length">Choice a city from the list and add a city.</h2>
+    <div class="cities">
+        <div class="city-info-wrapper" *ngFor="let city of cities">
+            <div><span class="delete" (click)="deleteItem(city.id)">Delete</span></div>
+            <a routerLink="city/{{city.id}}">
+                <div class="city-info">
+                    <span>{{city.dt| datePipe}}</span>
+                    <h2>{{city.name}}</h2>
+                    <div class="weather">
+                        <div class="pic">
+                            <img src="images/{{city.weather[0].icon}}.png" alt="{{city.weather[0].main}}" width="48" height="48"/>
+                        </div>
+                        <div class="temp">
+                            <span *ngIf="city.main.temp > 0">+{{city.main.temp | roundNum}}</span>
+                            <span *ngIf="city.main.temp < 0">-{{city.main.temp | roundNum}}</span>
+                            <span *ngIf="city.main.temp == 0">{{city.main.temp | roundNum}}</span>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <p>{{city.weather[0].main}}</p>
+                        <span>{{city.weather[0].description | firstCapitalLetter}}</span>
+                    </div>
+                    
+                </div>
+            </a>
+        </div>
+    </div>
+</section>

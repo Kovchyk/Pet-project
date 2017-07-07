@@ -1,0 +1,41 @@
+<section id="content">
+   
+    <div class="city">
+        <div class="go-back">
+            <h2>{{cityName}}</h2>
+            <button type="button" (click)="backToCities()">Go Back</button>
+        </div>
+        <div class="detail">
+            <div class="city-info-wrapper" *ngFor="let day of days">
+                <div class="city-info">
+                    <span>{{day.dt | datePipe}}</span>
+                    <div class="weather">
+                        <div class="temp">
+                            <div class="row">
+                                <p>Morning</p>
+                                <span> {{day.temp.morn | roundNum}}</span>
+                            </div>
+                            <div class="row">
+                                <p>Day</p>
+                                <span> {{day.temp.day | roundNum}}</span>
+                            </div>
+                            <div class="row">
+                                <p>Evening</p>
+                                <span> {{day.temp.eve | roundNum}}</span>
+                            </div>
+                            <div class="row">
+                                <p>Night</p>
+                                <span> {{day.temp.night | roundNum}}</span>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <img src="images/{{day.weather[0].icon}}.png" alt="{{day.weather[0].main}}" width="48" height="48"/>
+                        </div>
+                        <p>{{day.weather[0].main}}</p>
+                        <span>{{day.weather[0].description | firstCapitalLetter}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

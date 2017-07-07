@@ -1,0 +1,126 @@
+.city-name {
+	width: 50%;
+}
+.city-name h2 {
+	float: left;
+	color: #ccc;
+}
+.refresh {
+	margin: 15px 0 0 20px;
+	display: inline-block;
+}
+.refresh span {
+	display: inline-block;
+	margin: 15px;
+}
+.refresh a {
+	display: block;
+	width: 48px;
+	height: 48px;
+}
+.cities {
+	margin: 0 -15px;
+	padding-top: 25px;
+	overflow: hidden;
+}
+.city-info-wrapper {
+	position: relative;
+	width: 25%;
+	float: left;
+	padding: 0 15px;
+	color: #fff;
+	margin-bottom: 25px; 
+}
+.city-info-wrapper a {
+  color: #fff;
+  text-decoration: none;
+}
+.city-info {
+	padding: 30px 25px;
+	box-shadow: 1px 1px 15px #000;
+	background: radial-gradient(circle at top right, #f9eec7, #eb3c00, #000);
+	text-align: center;
+	-webkit-transition: margin 0.3s, padding 0.3s; /* Safari */
+    transition: margin 0.3s, padding 0.3s;
+}
+.city-info:hover {
+	margin: -5px;
+	padding: 35px 30px;
+}
+.city-info span:first-child {
+	text-shadow: 1px 1px 4px #000;
+}
+.city-info h2 {
+	height: 66px;
+	line-height: 30px;
+	text-shadow: 1px 1px 10px #fff;
+	margin: 25px 0;
+}
+.city-info-wrapper span.delete {
+	position: absolute;
+	z-index: 9999;
+	right: 20px;
+	top: 10px;
+	text-indent: 9999px; 
+	background: url('images/delete.png') no-repeat;
+	width: 32px;
+	height: 32px;
+	display: block;
+	cursor: pointer;
+	display: none;
+}
+.city-info-wrapper:hover span.delete {
+	display: block;
+}
+.weather {
+	overflow: hidden;
+}
+.weather .pic {
+	float: left;
+	padding-top: 10px;
+}
+.weather .temp {
+	float: right;
+}
+.weather .temp span {
+	font-size: 65px;
+	line-height: 65px;
+	display: block;
+	padding: 0 6px 0 0;
+	text-shadow: 0px 1px 10px #000;
+}
+.description {
+	color: #ccc;
+}
+.description span {
+	display: block;
+	height: 50px;
+}
+@media screen and (max-width: 1199px) {
+	.city-info h2 {
+		font-size: 26px;
+		line-height: 28px;
+	}
+}
+@media screen and (max-width: 991px) {
+	#select-city {
+		width: 50%;
+	}
+	.city-info-wrapper{
+		width: 33.333%;
+	}
+}
+@media screen and (max-width: 768px) {
+	.city-info-wrapper{
+		width: 50%;
+	}
+}
+@media screen and (max-width: 640px) {
+	.city-info-wrapper{
+		width: 100%;
+		padding: 0;
+	}
+	.cities {
+		margin: 0;
+	}
+}
