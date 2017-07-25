@@ -1,9 +1,17 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { CityListResolver } from "../services/city-list-resolver";
 
 @Injectable()
 
 export class CitiesListService {
+
+    constructor(private http: Http) { }
+
+    fetchCitiesList() {
+        return this.http.get('app/list.json').map(res => res.json());
+    }
 
     citiesList = [
     {

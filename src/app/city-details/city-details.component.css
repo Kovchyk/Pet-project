@@ -1,39 +1,13 @@
-.go-back {
-	overflow: hidden;
-	padding: 25px 0;
-}
-.go-back h2 {
+.tool-bar__city-name {
 	float: left;
 	font-size: 30px;
 	line-height: 32px;
 	margin: 10px 0 0 0;
 }
-.go-back button {
+.tool-bar__button {
 	float: right;
-	border: none;
-	text-transform: uppercase;
-	background: #000;
-	color: #ccc;
-	padding: 15px;
-	cursor: pointer;
-	-webkit-transition: color 1s, opacity 1s; /* Safari */
-    transition: color 1s, opacity 1s;
-	border-radius: 5px;
-	box-shadow: -2px 2px 14px rgba(255, 255, 255, 0.9) inset;
 }
-.go-back button:hover {
-	color: #fff;
-	opacity: 0.8;
-}
-.detail {
-	margin: 0 -15px;
-}
-.detail:after {
-	display: block;
-	clear: both;
-	content: "";
-}
-.city-info-wrapper {
+.daily-info-wrapper {
 	position: relative;
 	width: 20%;
 	float: left;
@@ -41,168 +15,148 @@
 	color: #fff;
 	margin-bottom: 25px; 
 }
-.city-info {
+.daily-info {
 	padding: 20px 15px;
 	text-align: center;
 	box-shadow: 1px 1px 15px #000;
 	background: radial-gradient(circle at top right, #f9eec7, #eb3c00, #000);
 	-webkit-transition: margin 0.3s, padding 0.3s; /* Safari */
-    transition: margin 0.3s, padding 0.3s;
+	transition: margin 0.3s, padding 0.3s;
+	font: 22px/24px "PTSerif-Regular",helvetica,sans-serif;
 }
-.city-info:hover {
+.daily-info:hover {
 	margin: -5px;
 	padding: 25px 20px;
 }
-.city-info h2 {
-	height: 66px;
-	text-shadow: 1px 1px 10px #fff;
-}
-.city-info span {
+.daily-info__date {
 	display: inline-block;
 	height: 49px;
-}
-.city-info span:first-child {
 	text-shadow: 1px 1px 4px #000;
 }
-.city-info-wrapper span.delete {
-	position: absolute;
-	z-index: 9999;
-	right: 20px;
-	top: 10px;
-	text-indent: 9999px; 
-	background: url('images/delete.png') no-repeat;
-	width: 18px;
-	height: 18px;
-	display: block;
-	cursor: pointer;
-}
-.city-info-wrapper span.delete:hover {
-	top: 9px;
-}
-.temp {
+.daily-info__temperature {
 	padding: 0 0 20px 0;
 }
-.temp .row {
+.daily-info__row {
 	overflow: hidden;
 	border-bottom: 1px solid #fff;
 }
-.temp span {
+.daily-info__day-part {
+	float: left;
+	color: #ccc;
+}
+.daily-info__day-part-temperature {
 	font-size: 65px;
 	line-height: 65px;
 	display: block;
 	padding: 0 6px 0 0;
 	text-shadow: 0px 1px 10px #000;
-}
-.temp .row p {
-	float: left;
-	color: #ccc;
-}
-.temp .row span {
 	float: right;
 	padding: 0 6px 0 0;
 }
-.icon img {
+.daily-info__icon {
 	margin: 0 auto;
 }
+.daily-info__description {
+	display: block;
+	height: 50px;
+}
 @media screen and (max-width: 1199px) {
-	.city-info-wrapper {
+	.daily-info-wrapper {
 		width: 20%;
 	}
-	.city-info {
+	.daily-info {
 		padding: 15px 10px;
 	}
-	.city-info:hover {
+	.daily-info:hover {
 		padding: 20px 15px;
 	}
-	.temp .row p {
+	.daily-info__day-part {
 		font-size: 18px;
 		line-height: 20px;
 	}
-	.temp span {
+	.daily-info__day-part-temperature {
 		font-size: 50px;
 		line-height: 50px;
 	}
 }
 @media screen and (max-width: 991px) {
-	.city-info-wrapper{
+	.daily-info-wrapper{
 		width: 100%;
 	}
-	.city-info {
+	.daily-info {
 		padding: 25px 65px;
 	}
-	.city-info:hover {
+	.daily-info:hover {
 		padding: 30px 70px;
 	}
-	.city-info span:first-child  {
+	.daily-info__date  {
 		font-size: 40px;
 		line-height: 42px;
 	}
-	.temp {
+	.daily-info__temperature {
 		padding: 20px 0;
 		overflow: hidden;
 	}
-	.temp .row {
+	.daily-info__row {
 		float: left;
 		border-bottom: none;
 		border-right: 1px solid #fff;
 		width: 25%;
 		overflow: unset;
 	}
-	.temp .row:last-child {
+	.daily-info__row:last-child {
 		border-right: none;
 	}
-	.temp .row p {
+	.daily-info__day-part {
 		font-size: 30px;
 		line-height: 32px;
 		float: none;
 		margin: 5px 0;
 	}
-	.temp .row span {
+	.daily-info__day-part-temperature {
 		float: none;
 		display: inline;
 		font-size: 85px;
 		line-height: 85px;
 		padding: 0;
-	}
-	.temp span {
 		display: block;
 		padding: 0 6px 0 0;
 		text-shadow: 0px 1px 10px #000;
 	}
 }
 @media screen and (max-width: 768px) {
-	.city-info-wrapper{
-		padding: 0;
+	.daily-info__day-part {
+		font-size: 22px;
+		line-height: 24px;
 	}
-	.detail {
-		margin: 0;
-	}
-	.temp .row p {
-		font-size: 23px;
-		line-height: 25px;
-	}
-	.temp .row span {
+	.daily-info__day-part-temperature {
 		font-size: 63px;
 		line-height: 63px;
 	}
 }
 @media screen and (max-width: 595px) {
-	.temp {
+	.daily-info__temperature {
 		width: 100%;
 	}
-	.temp .row {
+	.daily-info__row {
 		float: none;
 		width: 100%;
 		border-right: none;
 		border-bottom: 1px solid #fff;
 		overflow: hidden;
 	}
-	.temp .row p {
+	.daily-info__day-part {
 		float: left;
 		margin: 20px 0;
 	}
-	.temp .row span {
+	.daily-info__day-part-temperature {
 		float: right;
 		padding-right: 6px;
+	}
+}
+@media screen and (max-width: 337px) {
+	.daily-info__date {
+		font-size: 36px;
+		line-height: 38px;
 	}
 }

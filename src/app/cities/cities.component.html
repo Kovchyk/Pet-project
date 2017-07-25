@@ -1,28 +1,24 @@
 <section id="content">
-    <div id="select-city-wrapper">
-        <div id="select-city">
-           <ng-select
+    <div class="tool-bar">
+        <div class="select-city">
+           <ng-select class="select-city__select"
                 [multiple]="false"
                 [options]="options"
                 [(ngModel)]="mySelectValue"
                 [placeholder]="myPlaceholderText">
             </ng-select>
-            <a routerLink="" (click)="goToDetails()">Add city</a>
+            <button type="button" class="button select-city__add-city" (click)="goToDetails()">Add city</button>
         </div>
-        <div class="city-name" [hidden]="cities == null || !cities.length">
-            <h2>{{date | date:'shortTime'}}</h2>
-            <div class="refresh">
-                <a href="#" (click)="refreshAllbyButton()">
-                    <img src="images/refresh.svg" alt="refresh" />
-                </a>
-            </div>
+        <div class="city-update" [hidden]="cities == null || !cities.length">
+            <h2 class="city-update__date">{{date | date:'shortTime'}}</h2>
+            <button class="button city-update__refresh" (click)="refreshAllbyButton()">Refresh</button>
         </div>
         <div class="clear"></div>
     </div>
     <h2 *ngIf="cities == null || !cities.length">Choice a city from the list and add a city.</h2>
-    <div class="cities">
+    <div class="weather-content">
         <div class="city-info-wrapper" *ngFor="let city of cities">
-            <div><span class="delete" (click)="deleteItem(city.id)">Delete</span></div>
+            <span class="delete" (click)="deleteItem(city.id)">Delete</span>
             <a routerLink="city/{{city.id}}">
                 <div class="city-info">
                     <span>{{city.dt| datePipe}}</span>
@@ -41,7 +37,6 @@
                         <p>{{city.weather[0].main}}</p>
                         <span>{{city.weather[0].description | firstCapitalLetter}}</span>
                     </div>
-                    
                 </div>
             </a>
         </div>

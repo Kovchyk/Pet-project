@@ -1,27 +1,14 @@
-.city-name {
+.city-update {
 	width: 50%;
+	overflow: hidden;
 }
-.city-name h2 {
+.city-update__date {
 	float: left;
 	color: #ccc;
+	margin: 10px 15px 0 0;
 }
-.refresh {
-	margin: 15px 0 0 20px;
-	display: inline-block;
-}
-.refresh span {
-	display: inline-block;
-	margin: 15px;
-}
-.refresh a {
-	display: block;
-	width: 48px;
-	height: 48px;
-}
-.cities {
-	margin: 0 -15px;
-	padding-top: 25px;
-	overflow: hidden;
+.city-update__refresh {
+	float: left;
 }
 .city-info-wrapper {
 	position: relative;
@@ -68,6 +55,7 @@
 	display: block;
 	cursor: pointer;
 	display: none;
+	overflow: hidden;
 }
 .city-info-wrapper:hover span.delete {
 	display: block;
@@ -103,8 +91,11 @@
 	}
 }
 @media screen and (max-width: 991px) {
+	.city-update {
+		width: 100%;
+	}
 	#select-city {
-		width: 50%;
+		width: 100%;
 	}
 	.city-info-wrapper{
 		width: 33.333%;
@@ -114,13 +105,21 @@
 	.city-info-wrapper{
 		width: 50%;
 	}
+	.button {
+		font-size: 14px;
+		line-height: 20px;
+	}
 }
 @media screen and (max-width: 640px) {
 	.city-info-wrapper{
 		width: 100%;
-		padding: 0;
 	}
 	.cities {
 		margin: 0;
+	}
+	.button {
+		font-size: 13px;
+		line-height: 18px;
+		padding: 15px 10px;
 	}
 }

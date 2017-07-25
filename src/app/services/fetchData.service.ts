@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { CityDetailsService } from "./city-details.service";
 
 @Injectable()
 
@@ -18,7 +17,7 @@ export class FetchDataService {
     private apiKey: string = 'e4a01aeef0993c451f22d98569c8e243';
     private subscription: Subscription;
 
-    constructor(private http: Http, private cityDetailService: CityDetailsService) {
+    constructor(private http: Http) {
         this.refreshItems();
     }
     
@@ -37,16 +36,16 @@ export class FetchDataService {
 
     addCity(id: number) {
         if (id) {
-            let array = this.getCitiesFromLocalStorage();
+            let citiesArray = this.getCitiesFromLocalStorage();
             // if localStorage is empty declare an array
-            if (array === null) {
-                array = [];
+            if (citiesArray === null) {
+                citiesArray = [];
             }
 
-            if (!array.some((val: any) => { return val.id == id;} )) {
+            if (!citiesArray.some((val: any) => { return val.id == id;} )) {
                 this.getDataFromServer(id).subscribe(data => {
-                    array.unshift(data);
-                    this.saveCitiesInLocalStorage(array);
+                    citiesArray.unshift(data);
+                    this.saveCitiesInLocalStorage(citiesArray);
                     this.cities.next(JSON.parse(localStorage.getItem("storedCities")));
                 });
             }
@@ -123,9 +122,13 @@ export class FetchDataService {
         console.log("Up");
     }
 
+    getFiveDayForecast(id: number) {
+       return this.http.get('http://api.openweathermap.org/data/2.5/forecast/daily?id=' + id + '&cnt=5&units=metric&APPID=' + this.apiKey).map(res => res.json());
+    }
+
     updateCityDetails(id: number) {
 
-        let cityDetails = this.cityDetailService.getFiveDayForecast(id);
+        let cityDetails = this.getFiveDayForecast(id);
         cityDetails.subscribe(details => {
             localStorage.setItem(details.city.id, JSON.stringify(details));
         });
@@ -135,8 +138,8 @@ export class FetchDataService {
     updateLastRefreshingDate() {
         let date = new Date().getTime();
         localStorage.setItem('lastDate', JSON.stringify(date));
-        let upadatedDate = localStorage.getItem('lastDate');
-        this.date.next(upadatedDate);
+        let updatedDate = localStorage.getItem('lastDate');
+        this.date.next(updatedDate);
     }
 
 }

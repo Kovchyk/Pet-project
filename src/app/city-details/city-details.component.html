@@ -1,39 +1,37 @@
 <section id="content">
-   
-    <div class="city">
-        <div class="go-back">
-            <h2>{{cityName}}</h2>
-            <button type="button" (click)="backToCities()">Go Back</button>
-        </div>
-        <div class="detail">
-            <div class="city-info-wrapper" *ngFor="let day of days">
-                <div class="city-info">
-                    <span>{{day.dt | datePipe}}</span>
-                    <div class="weather">
-                        <div class="temp">
-                            <div class="row">
-                                <p>Morning</p>
-                                <span> {{day.temp.morn | roundNum}}</span>
-                            </div>
-                            <div class="row">
-                                <p>Day</p>
-                                <span> {{day.temp.day | roundNum}}</span>
-                            </div>
-                            <div class="row">
-                                <p>Evening</p>
-                                <span> {{day.temp.eve | roundNum}}</span>
-                            </div>
-                            <div class="row">
-                                <p>Night</p>
-                                <span> {{day.temp.night | roundNum}}</span>
-                            </div>
+    <div class="tool-bar">
+        <h2 class="tool-bar__city-name">{{cityName}}</h2>
+        <button type="button" class="button tool-bar__button" (click)="backToCities()">Go Back</button>
+        <div class="clear"></div>
+    </div>
+    <div class="weather-content">
+        <div class="daily-info-wrapper" *ngFor="let day of days">
+            <div class="daily-info">
+                <span class="daily-info__date">{{day.dt | datePipe}}</span>
+                <div class="daily-info__weather">
+                    <div class="daily-info__temperature">
+                        <div class="daily-info__row">
+                            <p class="daily-info__day-part">Morning</p>
+                            <span class="daily-info__day-part-temperature"> {{day.temp.morn | roundNum}}</span>
                         </div>
-                        <div class="icon">
-                            <img src="images/{{day.weather[0].icon}}.png" alt="{{day.weather[0].main}}" width="48" height="48"/>
+                        <div class="daily-info__row">
+                            <p class="daily-info__day-part">Day</p>
+                            <span class="daily-info__day-part-temperature"> {{day.temp.day | roundNum}}</span>
                         </div>
-                        <p>{{day.weather[0].main}}</p>
-                        <span>{{day.weather[0].description | firstCapitalLetter}}</span>
+                        <div class="daily-info__row">
+                            <p class="daily-info__day-part">Evening</p>
+                            <span class="daily-info__day-part-temperature"> {{day.temp.eve | roundNum}}</span>
+                        </div>
+                        <div class="daily-info__row">
+                            <p class="daily-info__day-part">Night</p>
+                            <span class="daily-info__day-part-temperature"> {{day.temp.night | roundNum}}</span>
+                        </div>
                     </div>
+                    <div class="daily-info__icon-wrapper">
+                        <img class="daily-info__icon" src="images/{{day.weather[0].icon}}.png" alt="{{day.weather[0].main}}" width="48" height="48"/>
+                    </div>
+                    <p class="daily-info__main-weather">{{day.weather[0].main}}</p>
+                    <span class="daily-info__description">{{day.weather[0].description | firstCapitalLetter}}</span>
                 </div>
             </div>
         </div>

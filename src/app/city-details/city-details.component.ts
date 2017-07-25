@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchDataService } from '../services/fetchData.service';
 import { ActivatedRoute } from "@angular/router";
-import { CityDetailsService } from "../services/city-details.service";
-import { Resolver } from "../services/resolver";
+import { CityDeteilsResolver } from "../services/city-details-resolver";
 import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
-  selector: 'cityDetails',
+  selector: 'city-details',
   templateUrl: 'city-details.component.html',
   styleUrls: ['city-details.component.css'],
 })
@@ -26,7 +25,7 @@ export class CityDetailsComponent implements OnInit{
       this.activatedRoute.data.subscribe(data => {
           this.cityDetails = data['cityDetails'];
           this.id = this.cityDetails.city.id;
-          this.fetchDataService.addCity(this.id);
+          this.addCity(this.id);
           let storedCityInfo = localStorage.getItem(this.id + '');
 
           if (storedCityInfo) {
@@ -42,6 +41,10 @@ export class CityDetailsComponent implements OnInit{
           }
       });
 
+    }
+
+    addCity(id: number) {
+      return this.fetchDataService.addCity(id);
     }
 
     backToCities() {

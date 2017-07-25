@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from "@angular/router";
+//import { CityListResolver } from "../services/city-list-resolver";
 
 import { FetchDataService } from '../services/fetchData.service';
 import { CitiesListService } from "../services/cities-list.service";
@@ -13,6 +15,7 @@ import { CitiesListService } from "../services/cities-list.service";
 })
 
 export class CitiesComponent implements OnInit { 
+  citiesList: any;
   private cities: any;
   private id: number;
   private date: any;
@@ -21,18 +24,25 @@ export class CitiesComponent implements OnInit {
   myPlaceholderText: string = 'Select a city';
   mySelectValue: Array<string>; // Array of strings for multi select, string for single select.
 
-  constructor(private fetchDataService: FetchDataService, private router: Router, private citiesListService: CitiesListService) { }
+  constructor(private fetchDataService: FetchDataService, private activatedRoute: ActivatedRoute, private router: Router, private citiesListService: CitiesListService) { }
 
-  ngOnInit() { 
+  ngOnInit() { /*
+    this.activatedRoute.data.subscribe(data => {
+      this.citiesList = data['citiesList'];
+      this.citiesList.map((val: any) => {
+        this.options.push({value: val.id, label: val.name})
+      });
+    });*/
+
     this.date = localStorage.getItem('lastDate');
     this.cities = this.fetchDataService.cities.getValue();
     this.getDate();
     this.getCities();
     this.lists = this.citiesListService.citiesList;
     
-
     this.lists.map((val: any) => {
-      this.options.push({value: val.id, label: val.name})
+      this.options.push({value: val.id, label: val.name});
+      console.log(this.options);
     });
     
   }
@@ -41,6 +51,7 @@ export class CitiesComponent implements OnInit {
     
     if (this.mySelectValue) {
       this.router.navigate(['/add', this.mySelectValue]);
+      console.log(this.mySelectValue);
     }
 
   }

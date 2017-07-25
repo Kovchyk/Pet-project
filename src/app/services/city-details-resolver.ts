@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { CityDetailsService } from "../services/city-details.service";
 import { Observable } from 'rxjs/Rx';
+import { FetchDataService } from "./fetchData.service";
 
 @Injectable()
-export class Resolver implements Resolve<any> {
+export class CityDeteilsResolver implements Resolve<any> {
 
-  constructor(private cityDetailsService: CityDetailsService) {}
+  constructor(private fetchDataService: FetchDataService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    return this.cityDetailsService.getFiveDayForecast(route.params['id']);
+    return this.fetchDataService.getFiveDayForecast(route.params['id']);
   }
 }

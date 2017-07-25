@@ -68,6 +68,11 @@ article ,aside ,audio,canvas,datalist,details,figcaption,figure,footer,header,hg
  display: block; 
 }
 a:hover {text-decoration: underline;}
+:focus {
+    outline-style: none;
+    outline-width: 0px !important;
+    outline-color: none !important;
+}
 /* General settings */
 .navigation, #content {
   max-width: 1170px;
@@ -98,53 +103,75 @@ a:hover {text-decoration: underline;}
 datalist {
 	display: none;
 }
-#select-city-wrapper {
-	width: 100%;
-	margin-top: 25px;
+.tool-bar {
+	padding: 25px 0;
 }
-#select-city {
+.select-city {
   width: 50%;
 	float: right;
-	text-align: right;
 }
 .clear {
 	clear: both;
 }
-#select-city ng-select {
+.select-city__select {
 	width: 75%;
-	text-align: left;
+	float: left;
+	margin-top: 6px;
 }
-#select-city select, #select-city a {
-  display: inline-block;
+.select-city__add-city {
+	float: right;
 }
-#select-city a {
-	color: #000;
+.button {
+	border: none;
+	text-transform: uppercase;
+	background: #000;
+	color: #ccc;
 	padding: 15px;
+	cursor: pointer;
+	-webkit-transition: color 1s, opacity 1s; /* Safari */
+    transition: color 1s, opacity 1s;
+	border-radius: 5px;
+	box-shadow: -2px 2px 14px rgba(255, 255, 255, 0.9) inset;
+	font: 16px/24px "PTSerif-Regular", helvetica, sans-serif;
+}
+.button:hover {
+	color: #fff;
+	opacity: 0.8;
+}
+.weather-content {
+	margin: 0 -15px;
+}
+.weather-content:after {
+	content: "";
+	display: block;
+	clear: both;
 }
 @media screen and (max-width: 1199px) {
 	.navigation, #content {
 		max-width: 970px;
 		margin: 0 auto;
-	}
-	#select-city {
-		width: 75%;
-	}
-	#select-city select {
-		width: 50%;
+		padding: 0 15px;
 	}
 }
 @media screen and (max-width: 991px) {
 	.navigation, #content {
 		max-width: 750px;
 	}
+	.select-city {
+		width: 100%;
+		margin-bottom: 15px; 
+	}
+	.select-city__select {
+		width: 83%;
+	}
 }
-@media screen and (max-width: 768px) {
-	.navigation, #content {
-		padding: 0 2%;
+@media screen and (max-width: 639px) {
+	.select-city__select {
+		width: 70%;
 	}
 }
 @media screen and (max-width: 450px) {
-	.logo a, #select-city a {
+	.logo a {
 		font: 14px/16px "Oswald-Regular";
 		padding: 23px 14px;
 	}

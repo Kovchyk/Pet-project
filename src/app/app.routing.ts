@@ -3,18 +3,20 @@ import {Routes, RouterModule} from '@angular/router';
 
 import { CityDetailsComponent } from './city-details/city-details.component';
 import { CitiesComponent } from "./cities/cities.component";
-import { Resolver } from "./services/resolver";
+import { CityDeteilsResolver } from "./services/city-details-resolver";
+import { CityListResolver } from "./services/city-list-resolver";
 
 const AppRoutes: Routes = [
     {
         path: '',
-        component: CitiesComponent
+        component: CitiesComponent,
+        
     },
     {
         path: 'city/:id',
         component: CityDetailsComponent,
         resolve: {
-            cityDetails: Resolver
+            cityDetails: CityDeteilsResolver
         }
     },
     {
